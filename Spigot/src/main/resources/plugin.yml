@@ -1,0 +1,4 @@
+name: Parkour
+version: ${project.version}
+main: net.warchamer12.parkour.Parkour
+authors: [warchamer12]

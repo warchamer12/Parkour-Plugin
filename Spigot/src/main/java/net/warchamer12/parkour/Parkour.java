@@ -1,6 +1,9 @@
 package net.warchamer12.parkour;
 
+import net.warchamer12.parkour.listeners.PlayerJoinListener;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Parkour extends JavaPlugin {
@@ -11,6 +14,9 @@ public final class Parkour extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         getLogger().info("Starting parkour!");
+
+        PluginManager pm = Bukkit.getPluginManager();
+        pm.registerEvents(new PlayerJoinListener(), this);
 
     }
 

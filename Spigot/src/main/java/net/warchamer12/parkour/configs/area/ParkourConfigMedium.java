@@ -18,6 +18,7 @@ public class ParkourConfigMedium {
     static File df = Parkour.getPlugin().getDataFolder();
 
     public static void create() {
+        if (!folder.exists()) folder.mkdir();
         cfile = new File(df, "parkour medium data" + File.separator + ParkourObject.getMedium() + ".yml");
         if (!df.exists()) df.mkdir();
         if (!cfile.exists()) {

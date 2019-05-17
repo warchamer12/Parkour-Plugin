@@ -18,6 +18,7 @@ public class ParkourConfigHard {
     static File df = Parkour.getPlugin().getDataFolder();
 
     public static void create() {
+        if (!folder.exists()) folder.mkdir();
         cfile = new File(df, "parkour hard data" + File.separator + ParkourObject.getHard() + ".yml");
         if (!df.exists()) df.mkdir();
         if (!cfile.exists()) {

@@ -18,6 +18,7 @@ public class ParkourConfigUltra {
     static File df = Parkour.getPlugin().getDataFolder();
 
     public static void create() {
+        if (!folder.exists()) folder.mkdir();
         cfile = new File(df, "parkour ultra data" + File.separator + ParkourObject.getUltra() + ".yml");
         if (!df.exists()) df.mkdir();
         if (!cfile.exists()) {

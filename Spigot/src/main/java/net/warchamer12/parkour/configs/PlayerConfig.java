@@ -1,7 +1,7 @@
 package net.warchamer12.parkour.configs;
 
 import net.warchamer12.parkour.Parkour;
-import net.warchamer12.parkour.utils.Util;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -9,7 +9,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
 import java.io.File;
-import java.io.IOException;
 
 public class PlayerConfig {
 
@@ -24,7 +23,8 @@ public class PlayerConfig {
         if (!cfile.exists()) {
             try {
                 cfile.createNewFile();
-            } catch (IOException e) {
+                Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Utworzono gracza " + player.getUniqueId() + ".yaml" + "!");
+            } catch (Exception e) {
                 Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Blad przy tworzeniu pliku " + cfile.getName() + "!");
             }
         }
@@ -51,7 +51,8 @@ public class PlayerConfig {
     public static void save() {
         try {
             config.save(cfile);
-        } catch (Exception event) {
+            Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Zapisano wszystkie configi!");
+        } catch (Exception e) {
             Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Blad przy zapisywaniu pliku " + cfile.getName() + "!");
         }
     }

@@ -1,5 +1,6 @@
 package net.warchamer12.parkour.commands;
 
+import net.warchamer12.parkour.Parkour;
 import net.warchamer12.parkour.configs.area.ParkourConfigEasy;
 import net.warchamer12.parkour.configs.area.ParkourConfigHard;
 import net.warchamer12.parkour.configs.area.ParkourConfigMedium;
@@ -50,9 +51,35 @@ public class ParkourCommand implements CommandExecutor {
                         player.sendMessage(Util.fixColor("&cNiepoprawna forma!"));
                         return true;
                     }
-                } else {
-                    helpCommand(player);
-                    return true;
+                } else if (args[0].equalsIgnoreCase("usun")) {
+                    if (args[1].equalsIgnoreCase("easy")) {
+                        ParkourConfigEasy.delete();
+                        ParkourConfigEasy.save();
+                        player.sendMessage(Util.fixColor("&cUsunieto arene!"));
+                        ParkourObject.easy -= 1;
+                        return true;
+                    } else if (args[1].equalsIgnoreCase("medium")) {
+                        ParkourConfigMedium.delete();
+                        ParkourConfigMedium.save();
+                        player.sendMessage(Util.fixColor("&cUsunieto arene!"));
+                        ParkourObject.medium -= 1;
+                        return true;
+                    } else if (args[1].equalsIgnoreCase("hard")) {
+                        ParkourConfigHard.delete();
+                        ParkourConfigHard.save();
+                        player.sendMessage(Util.fixColor("&cUsunieto arene!"));
+                        ParkourObject.hard -= 1;
+                        return true;
+                    } else if (args[1].equalsIgnoreCase("ultra")) {
+                        ParkourConfigUltra.delete();
+                        ParkourConfigUltra.save();
+                        player.sendMessage(Util.fixColor("&cUsunieto arene!"));
+                        ParkourObject.ultra -= 1;
+                        return true;
+                    } else {
+                        player.sendMessage(Util.fixColor("&cNiepoprawna forma!"));
+                        return true;
+                    }
                 }
             } else if (args.length > 2) {
                 helpCommand(player);

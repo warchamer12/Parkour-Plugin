@@ -55,4 +55,13 @@ public class ParkourConfigMedium {
         }
     }
 
+    public static void delete() {
+        try {
+            cfile.delete();
+        } catch(Exception e) {
+            Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Error deleting " + cfile.getName() + "!");
+        }
+    }
+
+
 }

@@ -14,17 +14,17 @@ public class PlayerConfig {
 
     static File cfile;
     static FileConfiguration config;
-    static File folder = new File(Parkour.getPlugin().getDataFolder().getPath(), "player data" + File.separator);
+    static File folder = new File(Parkour.getPlugin().getDataFolder(), "player data" + File.separator);
     static File df = Parkour.getPlugin().getDataFolder();
 
-    public static void create(Player player) {
-        cfile = new File(df, "player data" + File.separator + player.getUniqueId() + ".yml");
+    public static void create(Player p) {
+        cfile = new File(df, "player data" + File.separator + p.getUniqueId() + ".yml");
         if (!df.exists()) df.mkdir();
         if (!cfile.exists()) {
             try {
                 cfile.createNewFile();
             } catch(Exception e) {
-                Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Blad przy tworzeniu pliku " + cfile.getName() + "!");
+                Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Error creating " + cfile.getName() + "!");
             }
         }
         config = YamlConfiguration.loadConfiguration(cfile);
@@ -38,12 +38,12 @@ public class PlayerConfig {
         return cfile;
     }
 
-    public static  void load(Player player) {
-        cfile = new File(df, "player data" + File.separator + player.getUniqueId() + ".yml");
+    public static void load(Player p) {
+        cfile = new File(df, "player data" + File.separator + p.getUniqueId() + ".yml");
         config = YamlConfiguration.loadConfiguration(cfile);
     }
 
-    public static  FileConfiguration get() {
+    public static FileConfiguration get() {
         return config;
     }
 
@@ -51,7 +51,7 @@ public class PlayerConfig {
         try {
             config.save(cfile);
         } catch(Exception e) {
-            Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Blad przy zapisywaniu pliku " + cfile.getName() + "!");
+            Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Error saving " + cfile.getName() + "!");
         }
     }
 

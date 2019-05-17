@@ -18,6 +18,7 @@ public class PlayerJoinListener implements Listener {
             PlayerConfig.load(player);
         } else {
             PlayerConfig.create(player);
+            PlayerConfig.save();
         }
     }
 

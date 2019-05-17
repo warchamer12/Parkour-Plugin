@@ -18,6 +18,7 @@ public class PlayerConfig {
     static File df = Parkour.getPlugin().getDataFolder();
 
     public static void create(Player p) {
+        if (!folder.exists()) folder.mkdir();
         cfile = new File(df, "player data" + File.separator + p.getUniqueId() + ".yml");
         if (!df.exists()) df.mkdir();
         if (!cfile.exists()) {

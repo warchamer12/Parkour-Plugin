@@ -42,13 +42,13 @@ public final class Parkour extends JavaPlugin {
 
         //Parkours
         ParkourConfigEasy.save();
-        Parkour.getPlugin().getConfig().set("Easy", ParkourObject.getEasy());
+        Parkour.getPlugin().getConfig().set("easy", ParkourObject.getEasy());
         ParkourConfigMedium.save();
-        Parkour.getPlugin().getConfig().set("Medium", ParkourObject.getMedium());
+        Parkour.getPlugin().getConfig().set("medium", ParkourObject.getMedium());
         ParkourConfigHard.save();
-        Parkour.getPlugin().getConfig().set("Hard", ParkourObject.getHard());
+        Parkour.getPlugin().getConfig().set("hard", ParkourObject.getHard());
         ParkourConfigUltra.save();
-        Parkour.getPlugin().getConfig().set("Ultra", ParkourObject.getUltra());
+        Parkour.getPlugin().getConfig().set("ultra", ParkourObject.getUltra());
         plugin.saveConfig();
     }
 

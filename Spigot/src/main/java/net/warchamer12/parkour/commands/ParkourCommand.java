@@ -9,6 +9,7 @@ import net.warchamer12.parkour.objects.ParkourObject;
 import net.warchamer12.parkour.utils.Util;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -20,13 +21,15 @@ public class ParkourCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) { return true; }
         Player player = (Player) sender;
+        Location loc = player.getLocation();
         if (player.hasPermission("parkour.admin")) {
-            if (args.length == 2) {
+            if (args.length == 3) {
                 if (args[0].equalsIgnoreCase("stworz")) {
                     if (args[1].equalsIgnoreCase("easy")) {
                         ParkourObject.easy += 1;
                         player.sendMessage(ChatColor.GREEN + "Stworzono parkour o nazwie " + args[1]);
                         ParkourConfigEasy.create();
+                        ParkourConfigEasy.get().set("spawn", loc);
                         ParkourConfigEasy.save();
                         Parkour.getPlugin().saveConfig();
                         return true;
@@ -34,6 +37,7 @@ public class ParkourCommand implements CommandExecutor {
                         ParkourObject.medium += 1;
                         player.sendMessage(ChatColor.GREEN + "Stworzono parkour o nazwie " + args[1]);
                         ParkourConfigMedium.create();
+                        ParkourConfigMedium.get().set("spawn", loc);
                         ParkourConfigMedium.save();
                         Parkour.getPlugin().saveConfig();
                         return true;
@@ -41,6 +45,7 @@ public class ParkourCommand implements CommandExecutor {
                         ParkourObject.hard += 1;
                         player.sendMessage(ChatColor.GREEN + "Stworzono parkour o nazwie " + args[1]);
                         ParkourConfigHard.create();
+                        ParkourConfigHard.get().set("spawn", loc);
                         ParkourConfigHard.save();
                         Parkour.getPlugin().saveConfig();
                         return true;
@@ -48,6 +53,7 @@ public class ParkourCommand implements CommandExecutor {
                         ParkourObject.ultra += 1;
                         player.sendMessage(ChatColor.GREEN + "Stworzono parkour o nazwie " + args[1]);
                         ParkourConfigUltra.create();
+                        ParkourConfigUltra.get().set("spawn", loc);
                         ParkourConfigUltra.save();
                         Parkour.getPlugin().saveConfig();
                         return true;
@@ -88,8 +94,25 @@ public class ParkourCommand implements CommandExecutor {
                         player.sendMessage(Util.fixColor("&cNiepoprawna forma!"));
                         return true;
                     }
+                } else if (args[0].equalsIgnoreCase("ustawspawn")) {
+                    if (args[1].equalsIgnoreCase("easy")) {
+
+                        return true;
+                    } else if (args[1].equalsIgnoreCase("medium")) {
+
+                        return true;
+                    } else if (args[1].equalsIgnoreCase("hard")) {
+
+                        return true;
+                    } else if (args[1].equalsIgnoreCase("ultra")) {
+
+                        return true;
+                    } else {
+                        player.sendMessage(Util.fixColor("&cNiepoprawna forma!"));
+                        return true;
+                    }
                 }
-            } else if (args.length > 2) {
+            } else if (args.length > 3) {
                 helpCommand(player);
                 return true;
             } else if (args.length < 0) {

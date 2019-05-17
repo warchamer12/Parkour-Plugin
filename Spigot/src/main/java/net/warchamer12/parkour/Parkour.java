@@ -20,9 +20,9 @@ public final class Parkour extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        loadConfig();
-        saveConfig();
         plugin = this;
+        saveConfig();
+        loadConfig();
         plugin.getDataFolder().getPath();
         getLogger().info("Starting parkour!");
 

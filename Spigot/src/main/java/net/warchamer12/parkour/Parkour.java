@@ -9,6 +9,7 @@ import net.warchamer12.parkour.configs.area.ParkourConfigUltra;
 import net.warchamer12.parkour.listeners.PlayerJoinListener;
 import net.warchamer12.parkour.objects.ParkourObject;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -19,7 +20,8 @@ public final class Parkour extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        plugin.saveDefaultConfig();
+        loadConfig();
+        saveConfig();
         plugin = this;
         plugin.getDataFolder().getPath();
         getLogger().info("Starting parkour!");
@@ -40,13 +42,13 @@ public final class Parkour extends JavaPlugin {
 
         //Parkours
         ParkourConfigEasy.save();
-        Parkour.getPlugin().getInstance().getConfig().set("Easy", ParkourObject.getEasy());
+        Parkour.getPlugin().getConfig().set("Easy", ParkourObject.getEasy());
         ParkourConfigMedium.save();
-        Parkour.getPlugin().getInstance().getConfig().set("Medium", ParkourObject.getMedium());
+        Parkour.getPlugin().getConfig().set("Medium", ParkourObject.getMedium());
         ParkourConfigHard.save();
-        Parkour.getPlugin().getInstance().getConfig().set("Hard", ParkourObject.getHard());
+        Parkour.getPlugin().getConfig().set("Hard", ParkourObject.getHard());
         ParkourConfigUltra.save();
-        Parkour.getPlugin().getInstance().getConfig().set("Ultra", ParkourObject.getUltra());
+        Parkour.getPlugin().getConfig().set("Ultra", ParkourObject.getUltra());
         plugin.saveConfig();
     }
 
@@ -60,5 +62,14 @@ public final class Parkour extends JavaPlugin {
 
     public Plugin getInstance() {
         return null;
+    }
+
+    public static void loadConfig() {
+        Parkour.getPlugin().saveDefaultConfig();
+        FileConfiguration config = Parkour.getPlugin().getConfig();
+        ParkourObject.easy = config.getInt("easy");
+        ParkourObject.medium = config.getInt("medium");
+        ParkourObject.hard = config.getInt("hard");
+        ParkourObject.ultra = config.getInt("ultra");
     }
 }

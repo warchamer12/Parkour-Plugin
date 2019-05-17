@@ -23,7 +23,7 @@ public final class Parkour extends JavaPlugin {
         getLogger().info("Starting parkour!");
 
         //Commands
-        getCommand("parkour").setExecutor(new ParkourCommand());
+        this.getCommands();
 
         //Listeners
         PluginManager pm = Bukkit.getPluginManager();
@@ -40,6 +40,10 @@ public final class Parkour extends JavaPlugin {
         ParkourConfigMedium.save();
         ParkourConfigHard.save();
         ParkourConfigUltra.save();
+    }
+
+    private void getCommands() {
+        this.getCommand("parkour").setExecutor(new ParkourCommand());
     }
 
     public static Parkour getPlugin() {

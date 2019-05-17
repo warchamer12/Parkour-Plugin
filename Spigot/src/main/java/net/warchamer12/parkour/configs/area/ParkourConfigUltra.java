@@ -14,11 +14,11 @@ public class ParkourConfigUltra {
 
     static File cfile;
     static FileConfiguration config;
-    static File folder = new File(Parkour.getPlugin().getDataFolder(), "parkour data" + File.separator);
+    static File folder = new File(Parkour.getPlugin().getDataFolder(), "parkour ultra data" + File.separator);
     static File df = Parkour.getPlugin().getDataFolder();
 
     public static void create() {
-        cfile = new File(df, "parkour data" + File.separator + ParkourObject.getUltra() + ".yml");
+        cfile = new File(df, "parkour ultra data" + File.separator + ParkourObject.getUltra() + ".yml");
         if (!df.exists()) df.mkdir();
         if (!cfile.exists()) {
             try {
@@ -39,7 +39,7 @@ public class ParkourConfigUltra {
     }
 
     public static void load(Player p) {
-        cfile = new File(df, "parkour data" + File.separator + ParkourObject.getUltra() + ".yml");
+        cfile = new File(df, "parkour ultra data" + File.separator + ParkourObject.getUltra() + ".yml");
         config = YamlConfiguration.loadConfiguration(cfile);
     }
 

@@ -2,6 +2,10 @@ package net.warchamer12.parkour;
 
 import net.warchamer12.parkour.commands.ParkourCommand;
 import net.warchamer12.parkour.configs.PlayerConfig;
+import net.warchamer12.parkour.configs.area.ParkourConfigEasy;
+import net.warchamer12.parkour.configs.area.ParkourConfigHard;
+import net.warchamer12.parkour.configs.area.ParkourConfigMedium;
+import net.warchamer12.parkour.configs.area.ParkourConfigUltra;
 import net.warchamer12.parkour.listeners.PlayerJoinListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
@@ -30,6 +34,12 @@ public final class Parkour extends JavaPlugin {
     public void onDisable() {
         getLogger().info("Disabled plugin!");
         PlayerConfig.save();
+
+        //Parkours
+        ParkourConfigEasy.save();
+        ParkourConfigMedium.save();
+        ParkourConfigHard.save();
+        ParkourConfigUltra.save();
     }
 
     public static Parkour getPlugin() {

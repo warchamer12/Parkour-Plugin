@@ -28,24 +28,28 @@ public class ParkourCommand implements CommandExecutor {
                         player.sendMessage(ChatColor.GREEN + "Stworzono parkour o nazwie " + args[1]);
                         ParkourConfigEasy.create();
                         ParkourConfigEasy.save();
+                        Parkour.getPlugin().saveConfig();
                         return true;
                     } else if (args[1].equalsIgnoreCase("medium")) {
                         ParkourObject.medium += 1;
                         player.sendMessage(ChatColor.GREEN + "Stworzono parkour o nazwie " + args[1]);
                         ParkourConfigMedium.create();
                         ParkourConfigMedium.save();
+                        Parkour.getPlugin().saveConfig();
                         return true;
                     } else if (args[1].equalsIgnoreCase("hard")) {
                         ParkourObject.hard += 1;
                         player.sendMessage(ChatColor.GREEN + "Stworzono parkour o nazwie " + args[1]);
                         ParkourConfigHard.create();
                         ParkourConfigHard.save();
+                        Parkour.getPlugin().saveConfig();
                         return true;
                     } else if (args[1].equalsIgnoreCase("ultra")) {
                         ParkourObject.ultra += 1;
                         player.sendMessage(ChatColor.GREEN + "Stworzono parkour o nazwie " + args[1]);
                         ParkourConfigUltra.create();
                         ParkourConfigUltra.save();
+                        Parkour.getPlugin().saveConfig();
                         return true;
                     } else {
                         player.sendMessage(Util.fixColor("&cNiepoprawna forma!"));
@@ -57,24 +61,28 @@ public class ParkourCommand implements CommandExecutor {
                         ParkourConfigEasy.save();
                         player.sendMessage(Util.fixColor("&cUsunieto arene!"));
                         ParkourObject.easy -= 1;
+                        Parkour.getPlugin().saveConfig();
                         return true;
                     } else if (args[1].equalsIgnoreCase("medium")) {
                         ParkourConfigMedium.delete();
                         ParkourConfigMedium.save();
                         player.sendMessage(Util.fixColor("&cUsunieto arene!"));
                         ParkourObject.medium -= 1;
+                        Parkour.getPlugin().saveConfig();
                         return true;
                     } else if (args[1].equalsIgnoreCase("hard")) {
                         ParkourConfigHard.delete();
                         ParkourConfigHard.save();
                         player.sendMessage(Util.fixColor("&cUsunieto arene!"));
                         ParkourObject.hard -= 1;
+                        Parkour.getPlugin().saveConfig();
                         return true;
                     } else if (args[1].equalsIgnoreCase("ultra")) {
                         ParkourConfigUltra.delete();
                         ParkourConfigUltra.save();
                         player.sendMessage(Util.fixColor("&cUsunieto arene!"));
                         ParkourObject.ultra -= 1;
+                        Parkour.getPlugin().saveConfig();
                         return true;
                     } else {
                         player.sendMessage(Util.fixColor("&cNiepoprawna forma!"));

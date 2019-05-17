@@ -1,5 +1,6 @@
 package net.warchamer12.parkour;
 
+import net.warchamer12.parkour.configs.PlayerConfig;
 import net.warchamer12.parkour.listeners.PlayerJoinListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
@@ -23,6 +24,7 @@ public final class Parkour extends JavaPlugin {
     @Override
     public void onDisable() {
         getLogger().info("Disabled plugin!");
+        PlayerConfig.save();
     }
 
     public static Parkour getPlugin() {

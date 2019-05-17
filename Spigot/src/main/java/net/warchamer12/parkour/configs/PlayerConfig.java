@@ -15,7 +15,7 @@ public class PlayerConfig {
 
     static File cfile;
     static FileConfiguration config;
-    static File folder = new File(Parkour.getPlugin().getDataFolder(), "player data" + File.separator);
+    static File folder = new File(Parkour.getPlugin().getDataFolder().getPath(), "player data" + File.separator);
     static File df = Parkour.getPlugin().getDataFolder();
 
     public static void create(Player player) {

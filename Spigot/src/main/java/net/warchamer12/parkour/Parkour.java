@@ -13,7 +13,6 @@ public final class Parkour extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
-        plugin.saveDefaultConfig();
         getLogger().info("Starting parkour!");
 
         PluginManager pm = Bukkit.getPluginManager();

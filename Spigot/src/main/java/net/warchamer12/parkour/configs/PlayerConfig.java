@@ -9,6 +9,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
 import java.io.File;
+import java.io.IOException;
 
 public class PlayerConfig {
 
@@ -51,7 +52,7 @@ public class PlayerConfig {
     public static void save() {
         try {
             config.save(cfile);
-        } catch(Exception e) {
+        } catch(IOException e) {
             Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Error saving " + cfile.getName() + "!");
         }
     }

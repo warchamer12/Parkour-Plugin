@@ -18,8 +18,8 @@ public class ParkourCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) { return true; }
-        if (sender.hasPermission("parkour.admin")) {
-            Player player = (Player) sender;
+        Player player = (Player) sender;
+        if (player.hasPermission("parkour.admin")) {
             if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("stworz")) {
                     if (args[1].equalsIgnoreCase("easy")) {
@@ -27,32 +27,42 @@ public class ParkourCommand implements CommandExecutor {
                         player.sendMessage(ChatColor.GREEN + "Stworzono parkour o nazwie " + args[1]);
                         ParkourConfigEasy.create();
                         ParkourConfigEasy.save();
+                        return true;
                     } else if (args[1].equalsIgnoreCase("medium")) {
                         ParkourObject.medium += 1;
                         player.sendMessage(ChatColor.GREEN + "Stworzono parkour o nazwie " + args[1]);
                         ParkourConfigMedium.create();
                         ParkourConfigMedium.save();
+                        return true;
                     } else if (args[1].equalsIgnoreCase("hard")) {
                         ParkourObject.hard += 1;
                         player.sendMessage(ChatColor.GREEN + "Stworzono parkour o nazwie " + args[1]);
                         ParkourConfigHard.create();
                         ParkourConfigHard.save();
+                        return true;
                     } else if (args[1].equalsIgnoreCase("ultra")) {
                         ParkourObject.ultra += 1;
                         player.sendMessage(ChatColor.GREEN + "Stworzono parkour o nazwie " + args[1]);
                         ParkourConfigUltra.create();
                         ParkourConfigUltra.save();
+                        return true;
                     } else {
                         player.sendMessage(Util.fixColor("&cWybierz arene do dodania easy/medium/hard/ultra"));
+                        return true;
                     }
+                } else {
+                    player.sendMessage(Util.fixColor("&cWybierz arene do dodania easy/medium/hard/ultra"));
+                    return true;
                 }
-
-                //TODO remove, setspawn
+            } else if (args.length > 1) {
+                player.sendMessage(Util.fixColor("&cWybierz arene do dodania easy/medium/hard/ultra"));
+                return true;
             }
         } else {
             ((Player) sender).sendTitle(" ", Util.fixColor("&cNie masz uprawnien!"), 2, 3, 2);
         }
         return false;
     }
+
 
 }

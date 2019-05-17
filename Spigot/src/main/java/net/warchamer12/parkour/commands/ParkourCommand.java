@@ -47,21 +47,29 @@ public class ParkourCommand implements CommandExecutor {
                         ParkourConfigUltra.save();
                         return true;
                     } else {
-                        player.sendMessage(Util.fixColor("&cWybierz arene do dodania easy/medium/hard/ultra"));
+                        player.sendMessage(Util.fixColor("&cNiepoprawna forma!"));
                         return true;
                     }
                 } else {
-                    player.sendMessage(Util.fixColor("&cWybierz arene do dodania easy/medium/hard/ultra"));
+                    helpCommand(player);
                     return true;
                 }
             } else if (args.length > 2) {
-                player.sendMessage(Util.fixColor("&cWybierz arene do dodania easy/medium/hard/ultra"));
+                helpCommand(player);
+                return true;
+            } else if (args.length == 0) {
+                helpCommand(player);
                 return true;
             }
         } else {
-            ((Player) sender).sendTitle(" ", Util.fixColor("&cNie masz uprawnien!"), 2, 3, 2);
+            player.sendMessage(Util.fixColor("&cNie masz uprawnien!"));
+            return true;
         }
         return false;
+    }
+
+    private void helpCommand(Player player) {
+        player.sendMessage(Util.fixColor("&c/parkour stworz easy/medium/hard/ultra"));
     }
 
 

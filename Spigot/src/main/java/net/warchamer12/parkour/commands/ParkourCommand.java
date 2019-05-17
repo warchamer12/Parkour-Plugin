@@ -20,7 +20,7 @@ public class ParkourCommand implements CommandExecutor {
         if (!(sender instanceof Player)) { return true; }
         Player player = (Player) sender;
         if (player.hasPermission("parkour.admin")) {
-            if (args.length == 1) {
+            if (args.length == 2) {
                 if (args[0].equalsIgnoreCase("stworz")) {
                     if (args[1].equalsIgnoreCase("easy")) {
                         ParkourObject.easy += 1;
@@ -54,7 +54,7 @@ public class ParkourCommand implements CommandExecutor {
                     player.sendMessage(Util.fixColor("&cWybierz arene do dodania easy/medium/hard/ultra"));
                     return true;
                 }
-            } else if (args.length > 1) {
+            } else if (args.length > 2) {
                 player.sendMessage(Util.fixColor("&cWybierz arene do dodania easy/medium/hard/ultra"));
                 return true;
             }

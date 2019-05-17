@@ -57,7 +57,7 @@ public class ParkourCommand implements CommandExecutor {
             } else if (args.length > 2) {
                 helpCommand(player);
                 return true;
-            } else if (args.length == 0) {
+            } else if (args.length < 0) {
                 helpCommand(player);
                 return true;
             }

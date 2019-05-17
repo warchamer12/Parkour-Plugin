@@ -23,19 +23,18 @@ public class PlayerConfig {
         if (!cfile.exists()) {
             try {
                 cfile.createNewFile();
-                Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Utworzono gracza " + player.getUniqueId() + ".yaml" + "!");
-            } catch (Exception e) {
+            } catch(Exception e) {
                 Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Blad przy tworzeniu pliku " + cfile.getName() + "!");
             }
         }
         config = YamlConfiguration.loadConfiguration(cfile);
     }
 
-    public static File getFolder() {
+    public static File getfolder() {
         return folder;
     }
 
-    public static File getFile() {
+    public static File getfile() {
         return cfile;
     }
 
@@ -51,8 +50,7 @@ public class PlayerConfig {
     public static void save() {
         try {
             config.save(cfile);
-            Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Zapisano wszystkie configi!");
-        } catch (Exception e) {
+        } catch(Exception e) {
             Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Blad przy zapisywaniu pliku " + cfile.getName() + "!");
         }
     }

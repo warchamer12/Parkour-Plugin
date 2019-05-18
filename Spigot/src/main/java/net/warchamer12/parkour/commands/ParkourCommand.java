@@ -100,8 +100,7 @@ public class ParkourCommand implements CommandExecutor {
                     helpCommand(player);
                     return true;
                 }
-            }
-            if (args.length == 2) {
+            } else if (args.length == 3) {
                 if (args[0].equalsIgnoreCase("ustawspawn")) {
                     if (args[1].equalsIgnoreCase("easy")) {
                         if (args[2].length() > 3 || !StringUtils.isNumeric(args[2])) {
@@ -139,7 +138,13 @@ public class ParkourCommand implements CommandExecutor {
                         player.sendMessage(Util.fixColor("&cNiepoprawna forma!"));
                         return true;
                     }
+                } else {
+                    helpCommand(player);
+                    return true;
                 }
+            } else if (args.length > 3) {
+                helpCommand(player);
+                return true;
             }
         } else {
             player.sendMessage(Util.fixColor("&cNie masz uprawnien!"));

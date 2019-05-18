@@ -8,6 +8,8 @@ import net.warchamer12.parkour.configs.area.ParkourConfigUltra;
 import net.warchamer12.parkour.objects.ParkourObject;
 import net.warchamer12.parkour.utils.Util;
 
+import org.apache.commons.lang.StringUtils;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -23,7 +25,7 @@ public class ParkourCommand implements CommandExecutor {
         Player player = (Player) sender;
         Location loc = player.getLocation();
         if (player.hasPermission("parkour.admin")) {
-            if (args.length == 3) {
+            if (args.length == 2) {
                 if (args[0].equalsIgnoreCase("stworz")) {
                     if (args[1].equalsIgnoreCase("easy")) {
                         ParkourObject.easy += 1;
@@ -94,30 +96,50 @@ public class ParkourCommand implements CommandExecutor {
                         player.sendMessage(Util.fixColor("&cNiepoprawna forma!"));
                         return true;
                     }
-                } else if (args[0].equalsIgnoreCase("ustawspawn")) {
+                } else if (args.length < 0) {
+                    helpCommand(player);
+                    return true;
+                }
+            }
+            if (args.length == 2) {
+                if (args[0].equalsIgnoreCase("ustawspawn")) {
                     if (args[1].equalsIgnoreCase("easy")) {
-
+                        if (args[2].length() > 3 || !StringUtils.isNumeric(args[2])) {
+                            sender.sendMessage(Util.fixColor("&8 Podaj id areny!"));
+                            return true;
+                        }
+                        ParkourConfigEasy.getfile().getName().equals(args[2]);
+                        ParkourConfigEasy.get().set("spawn", loc);
                         return true;
                     } else if (args[1].equalsIgnoreCase("medium")) {
-
+                        if (args[2].length() > 3 || !StringUtils.isNumeric(args[2])) {
+                            sender.sendMessage(Util.fixColor("&8 Podaj id areny!"));
+                            return true;
+                        }
+                        ParkourConfigEasy.getfile().getName().equals(args[2]);
+                        ParkourConfigEasy.get().set("spawn", loc);
                         return true;
                     } else if (args[1].equalsIgnoreCase("hard")) {
-
+                        if (args[2].length() > 3 || !StringUtils.isNumeric(args[2])) {
+                            sender.sendMessage(Util.fixColor("&8 Podaj id areny!"));
+                            return true;
+                        }
+                        ParkourConfigEasy.getfile().getName().equals(args[2]);
+                        ParkourConfigEasy.get().set("spawn", loc);
                         return true;
                     } else if (args[1].equalsIgnoreCase("ultra")) {
-
+                        if (args[2].length() > 3 || !StringUtils.isNumeric(args[2])) {
+                            sender.sendMessage(Util.fixColor("&8 Podaj id areny!"));
+                            return true;
+                        }
+                        ParkourConfigEasy.getfile().getName().equals(args[2]);
+                        ParkourConfigEasy.get().set("spawn", loc);
                         return true;
                     } else {
                         player.sendMessage(Util.fixColor("&cNiepoprawna forma!"));
                         return true;
                     }
                 }
-            } else if (args.length > 3) {
-                helpCommand(player);
-                return true;
-            } else if (args.length < 0) {
-                helpCommand(player);
-                return true;
             }
         } else {
             player.sendMessage(Util.fixColor("&cNie masz uprawnien!"));

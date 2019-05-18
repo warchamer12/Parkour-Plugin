@@ -45,6 +45,7 @@ public class ParkourCommand implements CommandExecutor {
                         ParkourConfigEasy.create();
                         ParkourConfigEasy.get().set("spawn", loc);
                         ParkourConfigEasy.save();
+                        Parkour.getPlugin().getConfig().set("easy", ParkourObject.getEasy());
                         Parkour.getPlugin().saveConfig();
                         return true;
                     } else if (args[1].equalsIgnoreCase("medium")) {
@@ -53,6 +54,7 @@ public class ParkourCommand implements CommandExecutor {
                         ParkourConfigMedium.create();
                         ParkourConfigMedium.get().set("spawn", loc);
                         ParkourConfigMedium.save();
+                        Parkour.getPlugin().getConfig().set("medium", ParkourObject.getMedium());
                         Parkour.getPlugin().saveConfig();
                         return true;
                     } else if (args[1].equalsIgnoreCase("hard")) {
@@ -61,6 +63,7 @@ public class ParkourCommand implements CommandExecutor {
                         ParkourConfigHard.create();
                         ParkourConfigHard.get().set("spawn", loc);
                         ParkourConfigHard.save();
+                        Parkour.getPlugin().getConfig().set("hard", ParkourObject.getHard());
                         Parkour.getPlugin().saveConfig();
                         return true;
                     } else if (args[1].equalsIgnoreCase("ultra")) {
@@ -69,6 +72,7 @@ public class ParkourCommand implements CommandExecutor {
                         ParkourConfigUltra.create();
                         ParkourConfigUltra.get().set("spawn", loc);
                         ParkourConfigUltra.save();
+                        Parkour.getPlugin().getConfig().set("ultra", ParkourObject.getUltra());
                         Parkour.getPlugin().saveConfig();
                         return true;
                     } else {

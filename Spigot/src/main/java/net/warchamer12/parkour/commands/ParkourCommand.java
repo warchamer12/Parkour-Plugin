@@ -111,22 +111,22 @@ public class ParkourCommand implements CommandExecutor {
             } else if (args.length == 3) {
                 if (args[0].equalsIgnoreCase("ustawspawn")) {
                     if (args[1].equalsIgnoreCase("easy")) {
-                        ParkourConfigEasy.getName(args[2]);
+                        ParkourConfigEasy.getfile().getName();
                         ParkourConfigEasy.get().set("spawn", loc);
                         ParkourConfigEasy.save();
                         return true;
                     } else if (args[1].equalsIgnoreCase("medium")) {
-                        ParkourConfigMedium.getName(args[2]);
+                        ParkourConfigMedium.getfile().getName();
                         ParkourConfigMedium.get().set("spawn", loc);
                         ParkourConfigMedium.save();
                         return true;
                     } else if (args[1].equalsIgnoreCase("hard")) {
-                        ParkourConfigHard.getName(args[2]);
+                        ParkourConfigHard.getfile().getName();
                         ParkourConfigHard.get().set("spawn", loc);
                         ParkourConfigHard.save();
                         return true;
                     } else if (args[1].equalsIgnoreCase("ultra")) {
-                        ParkourConfigUltra.getName(args[2]);
+                        ParkourConfigUltra.getfile().getName();
                         ParkourConfigUltra.get().set("spawn", loc);
                         ParkourConfigUltra.save();
                         return true;

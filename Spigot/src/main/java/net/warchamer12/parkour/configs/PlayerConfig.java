@@ -15,12 +15,12 @@ public class PlayerConfig {
 
     static File cfile;
     static FileConfiguration config;
-    static File folder = new File(Parkour.getPlugin().getDataFolder(), "player data" + File.separator);
+    static File folder = new File(Parkour.getPlugin().getDataFolder(), "players" + File.separator);
     static File df = Parkour.getPlugin().getDataFolder();
 
     public static void create(Player p) {
         if (!folder.exists()) folder.mkdir();
-        cfile = new File(df, "player data" + File.separator + p.getUniqueId() + ".yml");
+        cfile = new File(df, "players" + File.separator + p.getUniqueId() + ".yml");
         if (!df.exists()) df.mkdir();
         if (!cfile.exists()) {
             try {
@@ -41,7 +41,7 @@ public class PlayerConfig {
     }
 
     public static void load(Player p) {
-        cfile = new File(df, "player data" + File.separator + p.getUniqueId() + ".yml");
+        cfile = new File(df, "players" + File.separator + p.getUniqueId() + ".yml");
         config = YamlConfiguration.loadConfiguration(cfile);
     }
 

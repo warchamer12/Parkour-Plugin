@@ -35,6 +35,7 @@ public class ParkourCommand implements CommandExecutor {
                         ParkourObject.easy += 1;
                         player.sendMessage(ChatColor.GREEN + "Stworzono parkour o nazwie " + args[1]);
                         ParkourConfigEasy.create();
+                        ParkourConfigEasy.get().set("nazwa", "Easy " + ParkourObject.getEasy());
                         ParkourConfigEasy.get().set("spawn", loc);
                         ParkourConfigEasy.save();
                         Parkour.getPlugin().getConfig().set("easy", ParkourObject.getEasy());
@@ -44,6 +45,7 @@ public class ParkourCommand implements CommandExecutor {
                         ParkourObject.medium += 1;
                         player.sendMessage(ChatColor.GREEN + "Stworzono parkour o nazwie " + args[1]);
                         ParkourConfigMedium.create();
+                        ParkourConfigMedium.get().set("nazwa", "Medium " + ParkourObject.getMedium());
                         ParkourConfigMedium.get().set("spawn", loc);
                         ParkourConfigMedium.save();
                         Parkour.getPlugin().getConfig().set("medium", ParkourObject.getMedium());
@@ -53,6 +55,7 @@ public class ParkourCommand implements CommandExecutor {
                         ParkourObject.hard += 1;
                         player.sendMessage(ChatColor.GREEN + "Stworzono parkour o nazwie " + args[1]);
                         ParkourConfigHard.create();
+                        ParkourConfigHard.get().set("nazwa", "Hard " + ParkourObject.getHard());
                         ParkourConfigHard.get().set("spawn", loc);
                         ParkourConfigHard.save();
                         Parkour.getPlugin().getConfig().set("hard", ParkourObject.getHard());
@@ -62,6 +65,7 @@ public class ParkourCommand implements CommandExecutor {
                         ParkourObject.ultra += 1;
                         player.sendMessage(ChatColor.GREEN + "Stworzono parkour o nazwie " + args[1]);
                         ParkourConfigUltra.create();
+                        ParkourConfigUltra.get().set("nazwa", "Ultra " + ParkourObject.getUltra());
                         ParkourConfigUltra.get().set("spawn", loc);
                         ParkourConfigUltra.save();
                         Parkour.getPlugin().getConfig().set("ultra", ParkourObject.getUltra());
@@ -111,25 +115,25 @@ public class ParkourCommand implements CommandExecutor {
             } else if (args.length == 3) {
                 if (args[0].equalsIgnoreCase("ustawspawn")) {
                     if (args[1].equalsIgnoreCase("easy")) {
-                        ParkourConfigEasy.getName(args[2]);
+                        ParkourConfigEasy.getFileParkour(args[2]);
                         ParkourConfigEasy.get().set("spawn", loc);
                         ParkourConfigEasy.save();
                         player.sendMessage(Util.fixColor("&cUstawiono spawn dla mapy " + args[2] + " na kordynatach: " + loc));
                         return true;
                     } else if (args[1].equalsIgnoreCase("medium")) {
-                        ParkourConfigMedium.getName(args[2]);
+                        ParkourConfigMedium.getFileParkour(args[2]);
                         ParkourConfigMedium.get().set("spawn", loc);
                         ParkourConfigMedium.save();
                         player.sendMessage(Util.fixColor("&cUstawiono spawn dla mapy " + args[2] + " na kordynatach: " + loc));
                         return true;
                     } else if (args[1].equalsIgnoreCase("hard")) {
-                        ParkourConfigHard.getName(args[2]);
+                        ParkourConfigHard.getFileParkour(args[2]);
                         ParkourConfigHard.get().set("spawn", loc);
                         ParkourConfigHard.save();
                         player.sendMessage(Util.fixColor("&cUstawiono spawn dla mapy " + args[2] + " na kordynatach: " + loc));
                         return true;
                     } else if (args[1].equalsIgnoreCase("ultra")) {
-                        ParkourConfigUltra.getName(args[2]);
+                        ParkourConfigUltra.getFileParkour(args[2]);
                         ParkourConfigUltra.get().set("spawn", loc);
                         ParkourConfigUltra.save();
                         player.sendMessage(Util.fixColor("&cUstawiono spawn dla mapy " + args[2] + " na kordynatach: " + loc));
@@ -140,17 +144,22 @@ public class ParkourCommand implements CommandExecutor {
                     }
                 } else {
                     this.helpCommand(player);
+                    return true;
                 }
+            } else {
+                this.helpCommand(player);
+                return true;
             }
         } else {
             player.sendMessage(Util.fixColor("&cNie masz uprawnien!"));
-            return true;
         }
         return false;
     }
 
     private void helpCommand(Player player) {
         player.sendMessage(Util.fixColor("&c/parkour stworz easy/medium/hard/ultra"));
+        player.sendMessage(Util.fixColor("&c/parkour usun easy/medium/hard/ultra id"));
+        player.sendMessage(Util.fixColor("&c/parkour ustawspawn easy/medium/hard/ultra id"));
     }
 
 

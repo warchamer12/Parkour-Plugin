@@ -39,7 +39,7 @@ public class ParkourConfigUltra {
         return cfile;
     }
 
-    public static void getName(String name) {
+    public static void getFileParkour(String name) {
         cfile = new File(df, "ultra" + File.separator + name + ".yml");
         config = YamlConfiguration.loadConfiguration(cfile);
     }

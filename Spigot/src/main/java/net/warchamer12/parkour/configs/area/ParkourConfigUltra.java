@@ -39,6 +39,10 @@ public class ParkourConfigUltra {
         return cfile;
     }
 
+    public static File getName(String name) {
+        return cfile = new File(df, "ultra" + File.separator + name + ".yml");
+    }
+
     public static void load(Player p) {
         cfile = new File(df, "ultra" + File.separator + ParkourObject.getUltra() + ".yml");
         config = YamlConfiguration.loadConfiguration(cfile);

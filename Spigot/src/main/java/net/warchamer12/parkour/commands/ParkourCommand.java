@@ -23,14 +23,6 @@ import java.io.File;
 
 public class ParkourCommand implements CommandExecutor {
 
-    static File cfile;
-    static File df = Parkour.getPlugin().getDataFolder();
-    static File easy = new File(Parkour.getPlugin().getDataFolder(), "parkour easy data" + File.separator);
-    static File medium = new File(Parkour.getPlugin().getDataFolder(), "parkour medium data" + File.separator);
-    static File hard = new File(Parkour.getPlugin().getDataFolder(), "parkour hard data" + File.separator);
-    static File ultra = new File(Parkour.getPlugin().getDataFolder(), "parkour ultra data" + File.separator);
-    static FileConfiguration config;
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) { return true; }
@@ -112,13 +104,39 @@ public class ParkourCommand implements CommandExecutor {
                         player.sendMessage(Util.fixColor("&cNiepoprawna forma!"));
                         return true;
                     }
-                } else if (args.length < 0) {
-                    helpCommand(player);
+                } else {
+                    this.helpCommand(player);
                     return true;
                 }
-            } else if (args.length < 0) {
-                helpCommand(player);
-                return true;
+            } else if (args.length == 3) {
+                if (args[0].equalsIgnoreCase("ustawspawn")) {
+                    if (args[1].equalsIgnoreCase("easy")) {
+                        ParkourConfigEasy.getName(args[2]);
+                        ParkourConfigEasy.get().set("spawn", loc);
+                        ParkourConfigEasy.save();
+                        return true;
+                    } else if (args[1].equalsIgnoreCase("medium")) {
+                        ParkourConfigMedium.getName(args[2]);
+                        ParkourConfigMedium.get().set("spawn", loc);
+                        ParkourConfigMedium.save();
+                        return true;
+                    } else if (args[1].equalsIgnoreCase("hard")) {
+                        ParkourConfigHard.getName(args[2]);
+                        ParkourConfigHard.get().set("spawn", loc);
+                        ParkourConfigHard.save();
+                        return true;
+                    } else if (args[1].equalsIgnoreCase("ultra")) {
+                        ParkourConfigUltra.getName(args[2]);
+                        ParkourConfigUltra.get().set("spawn", loc);
+                        ParkourConfigUltra.save();
+                        return true;
+                    } else {
+                        player.sendMessage(Util.fixColor("&cNiepoprawna forma!"));
+                        return true;
+                    }
+                } else {
+                    this.helpCommand(player);
+                }
             }
         } else {
             player.sendMessage(Util.fixColor("&cNie masz uprawnien!"));

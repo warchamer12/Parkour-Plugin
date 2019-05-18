@@ -39,6 +39,10 @@ public class ParkourConfigHard {
         return cfile;
     }
 
+    public static File getName(String name) {
+        return cfile = new File(df, "hard" + File.separator + name + ".yml");
+    }
+
     public static void load(Player p) {
         cfile = new File(df, "hard" + File.separator + ParkourObject.getHard() + ".yml");
         config = YamlConfiguration.loadConfiguration(cfile);

@@ -15,6 +15,8 @@ import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
 import java.io.File;
@@ -23,10 +25,11 @@ public class ParkourCommand implements CommandExecutor {
 
     static File cfile;
     static File df = Parkour.getPlugin().getDataFolder();
-    static File folder = new File(Parkour.getPlugin().getDataFolder(), "parkour easy data" + File.separator);
-    static File folder2 = new File(Parkour.getPlugin().getDataFolder(), "parkour medium data" + File.separator);
-    static File folder3 = new File(Parkour.getPlugin().getDataFolder(), "parkour hard data" + File.separator);
-    static File ultra = new File(Parkour.getPlugin().getDataFolder(), "parkour easy data" + File.separator);
+    static File easy = new File(Parkour.getPlugin().getDataFolder(), "parkour easy data" + File.separator);
+    static File medium = new File(Parkour.getPlugin().getDataFolder(), "parkour medium data" + File.separator);
+    static File hard = new File(Parkour.getPlugin().getDataFolder(), "parkour hard data" + File.separator);
+    static File ultra = new File(Parkour.getPlugin().getDataFolder(), "parkour ultra data" + File.separator);
+    static FileConfiguration config;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -116,8 +119,9 @@ public class ParkourCommand implements CommandExecutor {
                             sender.sendMessage(Util.fixColor("&8 Podaj id areny!"));
                             return true;
                         }
-                        if (!folder.exists()) return true;
+                        if (!easy.exists()) return true;
                         cfile = new File(df, "parkour easy data" + File.separator + args[2] + ".yml");
+                        config = YamlConfiguration.loadConfiguration(cfile);
                         if (!df.exists()) return true;
                         if (!cfile.exists()) {
                             player.sendMessage(Util.fixColor("&6Nie ma takiej areny!"));
@@ -132,8 +136,9 @@ public class ParkourCommand implements CommandExecutor {
                             sender.sendMessage(Util.fixColor("&8 Podaj id areny!"));
                             return true;
                         }
-                        if (!folder.exists()) return true;
+                        if (!medium.exists()) return true;
                         cfile = new File(df, "parkour medium data" + File.separator + args[2] + ".yml");
+                        config = YamlConfiguration.loadConfiguration(cfile);
                         if (!df.exists()) return true;
                         if (!cfile.exists()) {
                             player.sendMessage(Util.fixColor("&6Nie ma takiej areny!"));
@@ -148,8 +153,9 @@ public class ParkourCommand implements CommandExecutor {
                             sender.sendMessage(Util.fixColor("&8 Podaj id areny!"));
                             return true;
                         }
-                        if (!folder.exists()) return true;
+                        if (!hard.exists()) return true;
                         cfile = new File(df, "parkour hard data" + File.separator + args[2] + ".yml");
+                        config = YamlConfiguration.loadConfiguration(cfile);
                         if (!df.exists()) return true;
                         if (!cfile.exists()) {
                             player.sendMessage(Util.fixColor("&6Nie ma takiej areny!"));
@@ -164,8 +170,9 @@ public class ParkourCommand implements CommandExecutor {
                             sender.sendMessage(Util.fixColor("&8 Podaj id areny!"));
                             return true;
                         }
-                        if (!folder.exists()) return true;
+                        if (!ultra.exists()) return true;
                         cfile = new File(df, "parkour ultra data" + File.separator + args[2] + ".yml");
+                        config = YamlConfiguration.loadConfiguration(cfile);
                         if (!df.exists()) return true;
                         if (!cfile.exists()) {
                             player.sendMessage(Util.fixColor("&6Nie ma takiej areny!"));

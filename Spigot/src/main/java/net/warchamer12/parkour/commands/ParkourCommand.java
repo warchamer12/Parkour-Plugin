@@ -111,24 +111,28 @@ public class ParkourCommand implements CommandExecutor {
             } else if (args.length == 3) {
                 if (args[0].equalsIgnoreCase("ustawspawn")) {
                     if (args[1].equalsIgnoreCase("easy")) {
-                        ParkourConfigEasy.getfile().getName();
+                        ParkourConfigEasy.getName(args[2]);
                         ParkourConfigEasy.get().set("spawn", loc);
                         ParkourConfigEasy.save();
+                        player.sendMessage(Util.fixColor("&cUstawiono spawn dla mapy " + args[2] + " na kordynatach: " + loc));
                         return true;
                     } else if (args[1].equalsIgnoreCase("medium")) {
-                        ParkourConfigMedium.getfile().getName();
+                        ParkourConfigMedium.getName(args[2]);
                         ParkourConfigMedium.get().set("spawn", loc);
                         ParkourConfigMedium.save();
+                        player.sendMessage(Util.fixColor("&cUstawiono spawn dla mapy " + args[2] + " na kordynatach: " + loc));
                         return true;
                     } else if (args[1].equalsIgnoreCase("hard")) {
-                        ParkourConfigHard.getfile().getName();
+                        ParkourConfigHard.getName(args[2]);
                         ParkourConfigHard.get().set("spawn", loc);
                         ParkourConfigHard.save();
+                        player.sendMessage(Util.fixColor("&cUstawiono spawn dla mapy " + args[2] + " na kordynatach: " + loc));
                         return true;
                     } else if (args[1].equalsIgnoreCase("ultra")) {
-                        ParkourConfigUltra.getfile().getName();
+                        ParkourConfigUltra.getName(args[2]);
                         ParkourConfigUltra.get().set("spawn", loc);
                         ParkourConfigUltra.save();
+                        player.sendMessage(Util.fixColor("&cUstawiono spawn dla mapy " + args[2] + " na kordynatach: " + loc));
                         return true;
                     } else {
                         player.sendMessage(Util.fixColor("&cNiepoprawna forma!"));

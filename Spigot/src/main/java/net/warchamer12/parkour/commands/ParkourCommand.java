@@ -17,7 +17,16 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.io.File;
+
 public class ParkourCommand implements CommandExecutor {
+
+    static File cfile;
+    static File df = Parkour.getPlugin().getDataFolder();
+    static File folder = new File(Parkour.getPlugin().getDataFolder(), "parkour easy data" + File.separator);
+    static File folder2 = new File(Parkour.getPlugin().getDataFolder(), "parkour medium data" + File.separator);
+    static File folder3 = new File(Parkour.getPlugin().getDataFolder(), "parkour hard data" + File.separator);
+    static File ultra = new File(Parkour.getPlugin().getDataFolder(), "parkour easy data" + File.separator);
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -107,32 +116,64 @@ public class ParkourCommand implements CommandExecutor {
                             sender.sendMessage(Util.fixColor("&8 Podaj id areny!"));
                             return true;
                         }
-                        ParkourConfigEasy.getfile().getName().equals(args[2]);
-                        ParkourConfigEasy.get().set("spawn", loc);
+                        if (!folder.exists()) return true;
+                        cfile = new File(df, "parkour easy data" + File.separator + args[2] + ".yml");
+                        if (!df.exists()) return true;
+                        if (!cfile.exists()) {
+                            player.sendMessage(Util.fixColor("&6Nie ma takiej areny!"));
+                            return true;
+                        } else {
+                            ParkourConfigEasy.get().set("spawn", loc);
+                            ParkourConfigEasy.save();
+                        }
                         return true;
                     } else if (args[1].equalsIgnoreCase("medium")) {
                         if (args[2].length() > 3 || !StringUtils.isNumeric(args[2])) {
                             sender.sendMessage(Util.fixColor("&8 Podaj id areny!"));
                             return true;
                         }
-                        ParkourConfigEasy.getfile().getName().equals(args[2]);
-                        ParkourConfigEasy.get().set("spawn", loc);
+                        if (!folder.exists()) return true;
+                        cfile = new File(df, "parkour medium data" + File.separator + args[2] + ".yml");
+                        if (!df.exists()) return true;
+                        if (!cfile.exists()) {
+                            player.sendMessage(Util.fixColor("&6Nie ma takiej areny!"));
+                            return true;
+                        } else {
+                            ParkourConfigMedium.get().set("spawn", loc);
+                            ParkourConfigMedium.save();
+                        }
                         return true;
                     } else if (args[1].equalsIgnoreCase("hard")) {
                         if (args[2].length() > 3 || !StringUtils.isNumeric(args[2])) {
                             sender.sendMessage(Util.fixColor("&8 Podaj id areny!"));
                             return true;
                         }
-                        ParkourConfigEasy.getfile().getName().equals(args[2]);
-                        ParkourConfigEasy.get().set("spawn", loc);
+                        if (!folder.exists()) return true;
+                        cfile = new File(df, "parkour hard data" + File.separator + args[2] + ".yml");
+                        if (!df.exists()) return true;
+                        if (!cfile.exists()) {
+                            player.sendMessage(Util.fixColor("&6Nie ma takiej areny!"));
+                            return true;
+                        } else {
+                            ParkourConfigHard.get().set("spawn", loc);
+                            ParkourConfigHard.save();
+                        }
                         return true;
                     } else if (args[1].equalsIgnoreCase("ultra")) {
                         if (args[2].length() > 3 || !StringUtils.isNumeric(args[2])) {
                             sender.sendMessage(Util.fixColor("&8 Podaj id areny!"));
                             return true;
                         }
-                        ParkourConfigEasy.getfile().getName().equals(args[2]);
-                        ParkourConfigEasy.get().set("spawn", loc);
+                        if (!folder.exists()) return true;
+                        cfile = new File(df, "parkour ultra data" + File.separator + args[2] + ".yml");
+                        if (!df.exists()) return true;
+                        if (!cfile.exists()) {
+                            player.sendMessage(Util.fixColor("&6Nie ma takiej areny!"));
+                            return true;
+                        } else {
+                            ParkourConfigUltra.get().set("spawn", loc);
+                            ParkourConfigUltra.save();
+                        }
                         return true;
                     } else {
                         player.sendMessage(Util.fixColor("&cNiepoprawna forma!"));

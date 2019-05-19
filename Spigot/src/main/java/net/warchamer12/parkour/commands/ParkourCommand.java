@@ -107,24 +107,28 @@ public class ParkourCommand implements CommandExecutor {
                     if (args[1].equalsIgnoreCase("easy")) {
                         ParkourConfigEasy.delete(args[2]);
                         ParkourObject.easy -= 1;
+                        Parkour.getPlugin().getConfig().set("easy", ParkourObject.getEasy());
                         player.sendMessage(Util.fixColor("&cUsunieto arene " + args[2] + " !"));
                         Parkour.getPlugin().saveConfig();
                         return true;
                     } else if (args[1].equalsIgnoreCase("medium")) {
                         ParkourConfigMedium.delete(args[2]);
                         ParkourObject.medium -= 1;
+                        Parkour.getPlugin().getConfig().set("medium", ParkourObject.getMedium());
                         player.sendMessage(Util.fixColor("&cUsunieto arene " + args[2] + " !"));
                         Parkour.getPlugin().saveConfig();
                         return true;
                     } else if (args[1].equalsIgnoreCase("hard")) {
                         ParkourConfigHard.delete(args[2]);
                         ParkourObject.hard -= 1;
+                        Parkour.getPlugin().getConfig().set("hard", ParkourObject.getHard());
                         player.sendMessage(Util.fixColor("&cUsunieto arene " + args[2] + " !"));
                         Parkour.getPlugin().saveConfig();
                         return true;
                     } else if (args[1].equalsIgnoreCase("ultra")) {
                         ParkourConfigUltra.delete(args[2]);
                         ParkourObject.ultra -= 1;
+                        Parkour.getPlugin().getConfig().set("ultra", ParkourObject.getUltra());
                         player.sendMessage(Util.fixColor("&cUsunieto arene " + args[2] + " !"));
                         Parkour.getPlugin().saveConfig();
                         return true;

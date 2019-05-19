@@ -65,6 +65,6 @@ public class ParkourConfigEasy {
         cfile = new File(df, "easy" + File.separator + name + ".yml");
         cfile.delete();
     }
-
+    
 
 }

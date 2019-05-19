@@ -63,7 +63,6 @@ public class ParkourConfigUltra {
 
     public static void delete(String name) {
         cfile = new File(df, "ultra" + File.separator + name + ".yml");
-        config = YamlConfiguration.loadConfiguration(cfile);
         cfile.delete();
     }
 

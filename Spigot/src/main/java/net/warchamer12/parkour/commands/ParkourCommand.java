@@ -107,28 +107,24 @@ public class ParkourCommand implements CommandExecutor {
                     if (args[1].equalsIgnoreCase("easy")) {
                         ParkourConfigEasy.delete(args[2]);
                         player.sendMessage(Util.fixColor("&cUsunieto arene!"));
-                        ParkourConfigEasy.save();
                         ParkourObject.easy -= 1;
                         Parkour.getPlugin().saveConfig();
                         return true;
                     } else if (args[1].equalsIgnoreCase("medium")) {
                         ParkourConfigMedium.delete(args[2]);
                         player.sendMessage(Util.fixColor("&cUsunieto arene!"));
-                        ParkourConfigMedium.save();
                         ParkourObject.medium -= 1;
                         Parkour.getPlugin().saveConfig();
                         return true;
                     } else if (args[1].equalsIgnoreCase("hard")) {
                         ParkourConfigHard.delete(args[2]);
                         player.sendMessage(Util.fixColor("&cUsunieto arene!"));
-                        ParkourConfigHard.save();
                         ParkourObject.hard -= 1;
                         Parkour.getPlugin().saveConfig();
                         return true;
                     } else if (args[1].equalsIgnoreCase("ultra")) {
                         ParkourConfigUltra.delete(args[2]);
                         player.sendMessage(Util.fixColor("&cUsunieto arene!"));
-                        ParkourConfigUltra.save();
                         ParkourObject.ultra -= 1;
                         Parkour.getPlugin().saveConfig();
                         return true;

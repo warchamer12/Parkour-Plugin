@@ -63,7 +63,6 @@ public class ParkourConfigMedium {
 
     public static void delete(String name) {
         cfile = new File(df, "medium" + File.separator + name + ".yml");
-        config = YamlConfiguration.loadConfiguration(cfile);
         cfile.delete();
     }
 

@@ -28,7 +28,7 @@ public class PlayerJoinListener implements Listener {
 
         ItemStack a = new ItemBuilder(Material.BOAT).setName(Util.fixColor("&4Menu")).toItemStack();
         ItemStack b = new ItemBuilder(Material.SKULL_ITEM).setSkullOwner(Bukkit.getServer().getOfflinePlayer(event.getPlayer().getName()).getUniqueId().toString()).setName(Util.fixColor("&4&l" + player.getName())).toItemStack();
-        ItemStack c = new ItemBuilder(Material.BED_BLOCK).setName(Util.fixColor("&4CheckPoint")).toItemStack();
+        ItemStack c = new ItemBuilder(Material.BED).setName(Util.fixColor("&4CheckPoint")).toItemStack();
 
         if (player.hasPlayedBefore()) {
             PlayerConfig.load(player);

@@ -26,8 +26,10 @@ public class PlayerJoinListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        ItemStack a = new ItemBuilder(Material.BOAT).setName(Util.fixColor("&c&lMenu")).toItemStack();
-        ItemStack b = new ItemBuilder(Material.SKULL_ITEM).setSkullOwner(Bukkit.getServer().getOfflinePlayer(event.getPlayer().getName()).getUniqueId().toString()).setName(Util.fixColor("&c&l" + player.getName())).toItemStack();
+        ItemStack a = new ItemBuilder(Material.BOAT).setName(Util.fixColor("&4Menu")).toItemStack();
+        ItemStack b = new ItemBuilder(Material.SKULL_ITEM).setSkullOwner(Bukkit.getServer().getOfflinePlayer(event.getPlayer().getName()).getUniqueId().toString()).setName(Util.fixColor("&4&l" + player.getName())).toItemStack();
+        ItemStack c = new ItemBuilder(Material.BED).setName(Util.fixColor("&4CheckPoint")).toItemStack();
+
         if (player.hasPlayedBefore()) {
             PlayerConfig.load(player);
             player.sendMessage(Util.fixColor("&cWitamy ponownie na serwerze " + player.getName() + "!"));
@@ -44,6 +46,7 @@ public class PlayerJoinListener implements Listener {
 
             player.getInventory().setItem(1, a);
             player.getInventory().setItem(4, b);
+            player.getInventory().setItem(7, c);
         }
     }
 

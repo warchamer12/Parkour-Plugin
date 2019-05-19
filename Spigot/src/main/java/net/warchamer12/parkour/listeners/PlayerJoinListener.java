@@ -4,6 +4,7 @@ import net.warchamer12.parkour.configs.PlayerConfig;
 
 import net.warchamer12.parkour.utils.ItemBuilder;
 import net.warchamer12.parkour.utils.Util;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -26,7 +27,7 @@ public class PlayerJoinListener implements Listener {
         Player player = event.getPlayer();
 
         ItemStack a = new ItemBuilder(Material.BOAT).setName(Util.fixColor("&c&lMenu")).toItemStack();
-        ItemStack b = new ItemBuilder(Material.SKULL_ITEM).setSkullOwner(player.getName()).setName("&c&l" + player.getName()).toItemStack();
+        ItemStack b = new ItemBuilder(Material.SKULL_ITEM).setSkullOwner(Bukkit.getServer().getOfflinePlayer(player.getPlayer().getName()).getUniqueId().toString()).setName(Util.fixColor("&c&l" + player.getName())).toItemStack();
         if (player.hasPlayedBefore()) {
             PlayerConfig.load(player);
             player.sendMessage(Util.fixColor("&cWitamy ponownie na serwerze " + player.getName() + "!"));

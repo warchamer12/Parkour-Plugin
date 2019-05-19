@@ -8,18 +8,12 @@ import net.warchamer12.parkour.configs.area.ParkourConfigUltra;
 import net.warchamer12.parkour.objects.ParkourObject;
 import net.warchamer12.parkour.utils.Util;
 
-import org.apache.commons.lang.StringUtils;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-
-import java.io.File;
 
 public class ParkourCommand implements CommandExecutor {
 

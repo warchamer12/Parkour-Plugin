@@ -105,32 +105,28 @@ public class ParkourCommand implements CommandExecutor {
                     }
                 } else if (args[0].equalsIgnoreCase("usun")) {
                     if (args[1].equalsIgnoreCase("easy")) {
-                        ParkourConfigEasy.getFileParkour(args[2]);
-                        ParkourConfigEasy.delete();
+                        ParkourConfigEasy.delete(args[2]);
                         player.sendMessage(Util.fixColor("&cUsunieto arene!"));
                         ParkourConfigEasy.save();
                         ParkourObject.easy -= 1;
                         Parkour.getPlugin().saveConfig();
                         return true;
                     } else if (args[1].equalsIgnoreCase("medium")) {
-                        ParkourConfigMedium.getFileParkour(args[2]);
-                        ParkourConfigMedium.delete();
+                        ParkourConfigMedium.delete(args[2]);
                         player.sendMessage(Util.fixColor("&cUsunieto arene!"));
                         ParkourConfigMedium.save();
                         ParkourObject.medium -= 1;
                         Parkour.getPlugin().saveConfig();
                         return true;
                     } else if (args[1].equalsIgnoreCase("hard")) {
-                        ParkourConfigHard.getFileParkour(args[2]);
-                        ParkourConfigHard.delete();
+                        ParkourConfigHard.delete(args[2]);
                         player.sendMessage(Util.fixColor("&cUsunieto arene!"));
                         ParkourConfigHard.save();
                         ParkourObject.hard -= 1;
                         Parkour.getPlugin().saveConfig();
                         return true;
                     } else if (args[1].equalsIgnoreCase("ultra")) {
-                        ParkourConfigUltra.getFileParkour(args[2]);
-                        ParkourConfigUltra.delete();
+                        ParkourConfigUltra.delete(args[2]);
                         player.sendMessage(Util.fixColor("&cUsunieto arene!"));
                         ParkourConfigUltra.save();
                         ParkourObject.ultra -= 1;

@@ -61,7 +61,9 @@ public class ParkourConfigHard {
         }
     }
 
-    public static void delete() {
+    public static void delete(String name) {
+        cfile = new File(df, "hard" + File.separator + name + ".yml");
+        config = YamlConfiguration.loadConfiguration(cfile);
         cfile.delete();
     }
 

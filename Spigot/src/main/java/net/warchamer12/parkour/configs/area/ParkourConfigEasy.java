@@ -62,7 +62,11 @@ public class ParkourConfigEasy {
     }
 
     public static void delete() {
-        cfile.delete();
+        try {
+            cfile.delete();
+        } catch(Exception e) {
+            Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Error deleting file!");
+        }
     }
 
 

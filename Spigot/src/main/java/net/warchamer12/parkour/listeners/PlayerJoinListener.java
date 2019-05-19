@@ -26,7 +26,7 @@ public class PlayerJoinListener implements Listener {
         Player player = event.getPlayer();
 
         ItemStack a = new ItemBuilder(Material.BOAT).setName(Util.fixColor("&c&lMenu")).toItemStack();
-        ItemStack b = new ItemBuilder(Material.SKULL).setSkullOwner(player.getDisplayName()).toItemStack();
+        ItemStack b = new ItemBuilder(Material.SKULL).setSkullOwner("&c&l" + player.getName()).toItemStack();
         if (player.hasPlayedBefore()) {
             PlayerConfig.load(player);
             player.sendMessage(Util.fixColor("&cWitamy ponownie na serwerze " + player.getName() + "!"));
@@ -41,8 +41,8 @@ public class PlayerJoinListener implements Listener {
             PlayerConfig.get().set("joined at", format2.format(joined));
             PlayerConfig.save();
 
-            player.getInventory().setItem(2, a);
-            player.getInventory().setItem(5, b);
+            player.getInventory().setItem(1, a);
+            player.getInventory().setItem(4, b);
         }
     }
 

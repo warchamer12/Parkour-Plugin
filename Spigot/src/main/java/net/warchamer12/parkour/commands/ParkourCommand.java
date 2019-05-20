@@ -5,6 +5,7 @@ import net.warchamer12.parkour.configs.area.ParkourConfigEasy;
 import net.warchamer12.parkour.configs.area.ParkourConfigHard;
 import net.warchamer12.parkour.configs.area.ParkourConfigMedium;
 import net.warchamer12.parkour.configs.area.ParkourConfigUltra;
+import net.warchamer12.parkour.objects.AreaObject;
 import net.warchamer12.parkour.objects.ParkourObject;
 import net.warchamer12.parkour.utils.Util;
 
@@ -23,7 +24,13 @@ public class ParkourCommand implements CommandExecutor {
         Player player = (Player) sender;
         Location loc = player.getLocation();
         if (player.hasPermission("parkour.admin")) {
-            if (args.length == 2) {
+            if (args.length == 1) {
+                if (args[0].equalsIgnoreCase("easy")) {
+                    AreaObject.parkours.add(player);
+                    player.sendMessage(Util.fixColor("&cDolaczyles do areny!"));
+                    return true;
+                }
+            } else if (args.length == 2) {
                 if (args[0].equalsIgnoreCase("stworz")) {
                     if (args[1].equalsIgnoreCase("easy")) {
                         ParkourObject.easy += 1;

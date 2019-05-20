@@ -6,6 +6,7 @@ import net.warchamer12.parkour.configs.area.ParkourConfigEasy;
 import net.warchamer12.parkour.configs.area.ParkourConfigHard;
 import net.warchamer12.parkour.configs.area.ParkourConfigMedium;
 import net.warchamer12.parkour.configs.area.ParkourConfigUltra;
+import net.warchamer12.parkour.listeners.ParkourListener;
 import net.warchamer12.parkour.listeners.PlayerJoinListener;
 import net.warchamer12.parkour.objects.ParkourObject;
 import org.bukkit.Bukkit;
@@ -32,6 +33,7 @@ public final class Parkour extends JavaPlugin {
         //Listeners
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new PlayerJoinListener(), this);
+        pm.registerEvents(new ParkourListener(), this);
     }
 
     @Override

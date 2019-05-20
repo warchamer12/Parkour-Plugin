@@ -26,7 +26,7 @@ public class ParkourCommand implements CommandExecutor {
         if (player.hasPermission("parkour.admin")) {
             if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("easy")) {
-                    AreaObject.parkours.add(player);
+                    AreaObject.parkours.add(player.getUniqueId());
                     player.sendMessage(Util.fixColor("&cDolaczyles do areny!"));
                     return true;
                 }

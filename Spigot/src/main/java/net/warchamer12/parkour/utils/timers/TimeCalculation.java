@@ -27,7 +27,7 @@ public class TimeCalculation {
         new BukkitRunnable() {
             @Override
             public void run() {
-                TitleReflection.sendActionbar(player, Util.fixColor("&c" + hours + "h:" + minutes + "m:" + sec + "s"));
+                TitleReflection.sendActionbar(player.getUniqueId(), Util.fixColor("&c" + hours + "h:" + minutes + "m:" + sec + "s"));
             }
         }.runTaskTimer(Parkour.getPlugin(), 20L, 20L);
     }

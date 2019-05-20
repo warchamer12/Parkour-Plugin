@@ -4,10 +4,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.Constructor;
+import java.util.UUID;
 
 public class TitleReflection {
 
-    public static void sendActionbar(Player player, String msg) {
+    public static void sendActionbar(UUID player, String msg) {
         try {
             Constructor<?> constructor = getNMSClass("PacketPlayOutChat").getConstructor(getNMSClass("IChatBaseComponent"), getNMSClass("ChatMessageType"));
 

@@ -7,16 +7,18 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.material.Wool;
 
 public class ParkourListener implements Listener {
 
+    @EventHandler
     public static void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
 
-        if (AreaObject.parkours.contains(player)) {
+        if (AreaObject.parkours.contains(player.getUniqueId())) {
             Block block = player.getLocation().getBlock().getRelative(BlockFace.DOWN);
             if (block.getType() == Material.WOOL) {
                 Wool wool = new Wool(block.getType(), block.getData());

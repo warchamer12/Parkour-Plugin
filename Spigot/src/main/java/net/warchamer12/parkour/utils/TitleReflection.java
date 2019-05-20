@@ -7,51 +7,32 @@ import java.lang.reflect.Constructor;
 
 public class TitleReflection {
 
-    private String title;
-    private String subtitle;
-
-    public void sendPacket(Player player, Object packet) {
+    public static void sendActionbar(Player player, String msg) {
         try {
-            Object handle = player.getClass().getMethod("getHandle").invoke(player);
-            Object playerConnection = handle.getClass().getField("playerConnection").get(handle);
+            Constructor<?> constructor = getNMSClass("PacketPlayOutChat").getConstructor(getNMSClass("IChatBaseComponent"), getNMSClass("ChatMessageType"));
+
+            Object icbc = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + msg + "\"}");
+            Object packet = constructor.newInstance(icbc, getNMSClass("ChatMessageType").getEnumConstants()[2]);
+            Object entityPlayer= player.getClass().getMethod("getHandle").invoke(player);
+            Object playerConnection = entityPlayer.getClass().getField("playerConnection").get(entityPlayer);
+
             playerConnection.getClass().getMethod("sendPacket", getNMSClass("Packet")).invoke(playerConnection, packet);
-        } catch (Exception ex) {
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-    public  Class<?> getNMSClass(String name) {
+    public static Class<?> getNMSClass(String name) {
         try {
-            return Class.forName("net.minecraft.server"
-                    + Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3] + "." + name);
-        } catch (ClassNotFoundException ex) {
+            return Class.forName("net.minecraft.server." + getVersion() + "." + name);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
-    public void send(Player player, int fadeInTime, int showTime, int fadeOutTime) {
-        try {
-            Object chatTitle = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class)
-                    .invoke(null, "{\"text\": \"" + title + "\"}");
-            Constructor<?> titleConstructor = getNMSClass("PacketPlayOutTitle").getConstructor(
-                    getNMSClass("PacketPlayOutTitle").getDeclaredClasses()[0], getNMSClass("IChatBaseComponent"),
-                    int.class, int.class, int.class);
-            Object packet = titleConstructor.newInstance(
-                    getNMSClass("PacketPlayOutTitle").getDeclaredClasses()[0].getField("TITLE").get(null), chatTitle,
-                    fadeInTime, showTime, fadeOutTime);
-
-            Object chatsTitle = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class)
-                    .invoke(null, "{\"text\": \"" + subtitle + "\"}");
-            Constructor<?> stitleConstructor = getNMSClass("PacketPlayOutTitle").getConstructor(
-                    getNMSClass("PacketPlayOutTitle").getDeclaredClasses()[0], getNMSClass("IChatBaseComponent"),
-                    int.class, int.class, int.class);
-            Object spacket = stitleConstructor.newInstance(
-                    getNMSClass("PacketPlayOutTitle").getDeclaredClasses()[0].getField("SUBTITLE").get(null), chatsTitle,
-                    fadeInTime, showTime, fadeOutTime);
-
-            sendPacket(player, packet);
-            sendPacket(player, spacket);
-        } catch (Exception ex) {
-        }
+    public static String getVersion() {
+        return Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
     }
 
 

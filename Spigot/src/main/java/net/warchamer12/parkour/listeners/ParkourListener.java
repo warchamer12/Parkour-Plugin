@@ -21,10 +21,12 @@ public class ParkourListener implements Listener {
             if (block.getType() == Material.WOOL) {
                 Wool wool = new Wool(block.getType(), block.getData());
                 if (wool.getColor() == DyeColor.LIME) {
+                    player.sendMessage("wystarowala!");
                     TimeCalculation.time(player);
                     TimeCalculation.calculate(TimeCalculation.getTime(), player);
                 }
                 if (wool.getColor() == DyeColor.RED) {
+                    player.sendMessage("end!");
                     TimeCalculation.setTime(0, player);
                 }
             }

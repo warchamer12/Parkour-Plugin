@@ -22,14 +22,19 @@ public class ParkourListener implements Listener {
             Block block = player.getLocation().getBlock().getRelative(BlockFace.DOWN);
             if (block.getType() == Material.WOOL) {
                 Wool wool = new Wool(block.getType(), block.getData());
-                if (wool.getColor() == DyeColor.LIME) {
-                    player.sendMessage("wystarowala!");
-                    TimeCalculation.time(player);
-                    TimeCalculation.calculate(TimeCalculation.getTime(), player);
-                }
-                if (wool.getColor() == DyeColor.RED) {
-                    player.sendMessage("end!");
-                    TimeCalculation.setTime(0, player);
+                if (AreaObject.getStart() == true) {
+                    if (wool.getColor() == DyeColor.LIME) {
+                        player.sendMessage("wystarowala!");
+                        TimeCalculation.time(player);
+                        TimeCalculation.calculate(TimeCalculation.getTime(), player);
+                        AreaObject.setStart(false);
+                    }
+                } else if (AreaObject.getStart() == false) {
+                    if (wool.getColor() == DyeColor.RED) {
+                        player.sendMessage("end!");
+                        TimeCalculation.setTime(0, player);
+                        AreaObject.setStart(true);
+                    }
                 }
             }
         }

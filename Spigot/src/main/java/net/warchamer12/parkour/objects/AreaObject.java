@@ -4,11 +4,19 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class AreaObject {
 
     public static List<Player> parkours = new ArrayList<>();
 
-    private boolean start;
+    private static boolean start = true;
+
+    public static boolean getStart() {
+        return start;
+    }
+
+    public static void setStart(boolean st) {
+       start = st;
+    }
+
 }

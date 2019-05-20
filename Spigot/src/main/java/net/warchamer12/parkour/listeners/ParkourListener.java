@@ -25,8 +25,7 @@ public class ParkourListener implements Listener {
                 if (AreaObject.getStart() == true) {
                     if (wool.getColor() == DyeColor.LIME) {
                         player.sendMessage("wystarowala!");
-                        TimeCalculation.time(player);
-                        TimeCalculation.calculate(TimeCalculation.getTime(), player);
+                        TimeCalculation.calculate(player);
                         AreaObject.setStart(false);
                     }
                 } else if (AreaObject.getStart() == false) {

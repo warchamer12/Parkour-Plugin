@@ -19,24 +19,15 @@ public class TimeCalculation {
         player.getServer().getScheduler().cancelTask(time);
     }
 
-    public static void calculate(long seconds, Player player) {
-        long sec = seconds % 60;
-        long minutes = seconds % 3600 / 60;
-        long hours = seconds % 86400 / 3600;
-
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                TitleReflection.sendActionbar(player, Util.fixColor("&c" + hours + "h:" + minutes + "m:" + sec + "s"));
-            }
-        }.runTaskTimer(Parkour.getPlugin(), 20L, 20L);
-    }
-
-    public static void time(Player player) {
+    public static void calculate(Player player) {
         new BukkitRunnable() {
             @Override
             public void run() {
                 time++;
+                long sec = time % 60;
+                long minutes = time % 3600 / 60;
+                long hours = time % 86400 / 3600;
+                TitleReflection.sendActionbar(player, Util.fixColor("&c" + hours + "h:" + minutes + "m:" + sec + "s"));
             }
         }.runTaskTimer(Parkour.getPlugin(), 20L, 20L);
     }

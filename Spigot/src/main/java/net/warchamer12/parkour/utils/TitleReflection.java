@@ -4,17 +4,16 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.Constructor;
-import java.util.UUID;
 
 public class TitleReflection {
 
-    public static void sendActionbar(UUID player, String msg) {
+    public static void sendActionbar(Player player, String msg) {
         try {
             Constructor<?> constructor = getNMSClass("PacketPlayOutChat").getConstructor(getNMSClass("IChatBaseComponent"), getNMSClass("ChatMessageType"));
 
             Object icbc = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + msg + "\"}");
             Object packet = constructor.newInstance(icbc, getNMSClass("ChatMessageType").getEnumConstants()[2]);
-            Object entityPlayer= player.getClass().getMethod("getHandle").invoke(player);
+            Object entityPlayer = player.getClass().getMethod("getHandle").invoke(player);
             Object playerConnection = entityPlayer.getClass().getField("playerConnection").get(entityPlayer);
 
             playerConnection.getClass().getMethod("sendPacket", getNMSClass("Packet")).invoke(playerConnection, packet);

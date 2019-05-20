@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class AreaObject {
 
-    public static List<UUID> parkours = new ArrayList<>();
+    public static List<Player> parkours = new ArrayList<>();
 
     private boolean start;
 }

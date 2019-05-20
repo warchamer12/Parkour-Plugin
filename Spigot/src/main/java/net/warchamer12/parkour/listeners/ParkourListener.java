@@ -16,7 +16,7 @@ public class ParkourListener implements Listener {
     public static void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
 
-        if (AreaObject.parkours.contains(player.getName())) {
+        if (AreaObject.parkours.contains(player)) {
             Block block = player.getLocation().getBlock().getRelative(BlockFace.DOWN);
             if (block.getType() == Material.WOOL) {
                 Wool wool = new Wool(block.getType(), block.getData());

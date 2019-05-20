@@ -10,13 +10,9 @@ public class TimeCalculation {
 
     private static int time = 0;
 
-    public static int getTime() {
-        return time;
-    }
-
-    public static void setTime(int t, Player player) {
-        time = t;
+    public static void setTime(Player player, int t) {
         player.getServer().getScheduler().cancelTask(time);
+        time = t;
     }
 
     public static void calculate(Player player) {

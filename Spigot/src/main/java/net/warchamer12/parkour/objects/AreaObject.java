@@ -9,7 +9,7 @@ public class AreaObject {
 
     public static List<Player> parkours = new ArrayList<>();
 
-    private static boolean start = true;
+    private static boolean start;
 
     public static boolean getStart() {
         return start;

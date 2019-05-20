@@ -30,8 +30,9 @@ public class ParkourListener implements Listener {
                     }
                 } else if (AreaObject.getStart() == false) {
                     if (wool.getColor() == DyeColor.RED) {
+                        player.getServer().getScheduler().cancelAllTasks();
                         player.sendMessage("end!");
-                        TimeCalculation.setTime(0, event.getPlayer());
+                        TimeCalculation.setTime(event.getPlayer(), 0);
                         AreaObject.setStart(true);
                     }
                 }

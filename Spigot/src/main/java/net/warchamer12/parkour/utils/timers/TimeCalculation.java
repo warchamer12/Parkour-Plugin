@@ -11,8 +11,9 @@ public class TimeCalculation {
     private static int time = 0;
 
     public static void setTime(Player player, int t) {
-        player.getServer().getScheduler().cancelTask(time);
         time = t;
+        player.getServer().getScheduler().cancelTask(time);
+        player.getServer().getScheduler().cancelAllTasks();
     }
 
     public static void calculate(Player player) {
@@ -20,6 +21,7 @@ public class TimeCalculation {
             @Override
             public void run() {
                 time++;
+                int miliseconds = time % 1000;
                 long sec = time % 60;
                 long minutes = time % 3600 / 60;
                 long hours = time % 86400 / 3600;

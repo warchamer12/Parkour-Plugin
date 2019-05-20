@@ -11,6 +11,10 @@ public class AreaObject {
 
     private static boolean start;
 
+    public AreaObject() {
+        this.start = true;
+    }
+
     public static boolean getStart() {
         return start;
     }

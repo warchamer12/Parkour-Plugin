@@ -7,10 +7,16 @@ import java.util.List;
 
 public class uUtil {
 
-    private static List<AreaObject> users = new ArrayList<>();
+    public static List<AreaObject> users = new ArrayList<>();
 
     public static List<AreaObject> getUsers() {
         return users;
+    }
+
+    public static AreaObject createUser(String playername) {
+        AreaObject user = new AreaObject(playername);
+        uUtil.users.add(user);
+        return user;
     }
 
     public static AreaObject getUserByNick(String nick) {

@@ -32,8 +32,11 @@ public class PlayerJoinListener implements Listener {
         ItemStack b = new ItemBuilder(Material.SKULL_ITEM).setSkullOwner(Bukkit.getServer().getOfflinePlayer(event.getPlayer().getName()).getUniqueId().toString()).setName(Util.fixColor("&4&l" + player.getName())).toItemStack();
         ItemStack c = new ItemBuilder(Material.BED).setName(Util.fixColor("&4CheckPoint")).toItemStack();
 
+        if (uUtil.getUserByNick(player.getName()) == null) {
+            uUtil.createUser(player.getName());
+        }
+
         if (player.hasPlayedBefore()) {
-            AreaObject user = uUtil.getUserByNick(player.getName());
             PlayerConfig.load(player);
             player.sendMessage(Util.fixColor("&cWitamy ponownie na serwerze " + player.getName() + "!"));
 

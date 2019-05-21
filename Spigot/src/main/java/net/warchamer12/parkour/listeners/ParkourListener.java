@@ -27,14 +27,14 @@ public class ParkourListener implements Listener {
                 if (AreaObject.getStart(user) == true) {
                     if (wool.getColor() == DyeColor.LIME) {
                         player.sendMessage("wystarowala!");
-                        TimeCalculation.calculate(user.getPlayer());
+                        TimeCalculation.calculate((AreaObject) user.getPlayer());
                         AreaObject.setStart(user, false);
                     }
                 } else if (AreaObject.getStart(user) == false) {
                     if (wool.getColor() == DyeColor.RED) {
                         user.getPlayer().getServer().getScheduler().cancelAllTasks();
                         player.sendMessage("end!");
-                        TimeCalculation.setTime(user.getPlayer(), 0);
+                        TimeCalculation.setTime((AreaObject) user.getPlayer(), 0);
                         AreaObject.setStart(user, true);
                     }
                 }

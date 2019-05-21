@@ -10,25 +10,21 @@ public class AreaObject {
 
     public static List<Player> parkours = new ArrayList<>();
 
-    private static boolean start;
-
     private String nick;
+
+    private static boolean start;
 
     public AreaObject(String name) {
         this.start = true;
         this.nick = name;
     }
 
-    public AreaObject() {
-        this.start = true;
-    }
-
-    public static boolean getStart(Player player) {
+    public static boolean getStart(AreaObject player) {
         return start;
     }
 
-    public static void setStart(boolean st) {
-       start = st;
+    public static void setStart(AreaObject name, boolean b) {
+        start = b;
     }
 
     public String getNick() {

@@ -44,6 +44,8 @@ public class PlayerJoinListener implements Listener {
             player.getInventory().setItem(1, a);
             player.getInventory().setItem(4, b);
             player.getInventory().setItem(7, c);
+            AreaObject user = uUtil.getUserByNick(player.getName());
+            AreaObject.setStart(user, true);
         } else {
             PlayerConfig.create(player);
             PlayerConfig.get().set("playername", player.getName());

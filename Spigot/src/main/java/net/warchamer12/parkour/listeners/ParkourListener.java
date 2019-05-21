@@ -20,17 +20,17 @@ public class ParkourListener implements Listener {
         Player player = event.getPlayer();
         AreaObject user = uUtil.getUserByNick(player.getName());
 
-        if (AreaObject.parkours.contains(user)) {
+        if (AreaObject.parkours.contains(player)) {
             Block block = player.getLocation().getBlock().getRelative(BlockFace.DOWN);
             if (block.getType() == Material.WOOL) {
                 Wool wool = new Wool(block.getType(), block.getData());
-                if (AreaObject.getStart(user.getPlayer()) == true) {
+                if (AreaObject.getStart((Player) user) == true) {
                     if (wool.getColor() == DyeColor.LIME) {
                         player.sendMessage("wystarowala!");
                         TimeCalculation.calculate(user.getPlayer());
                         AreaObject.setStart(false);
                     }
-                } else if (AreaObject.getStart(user.getPlayer()) == false) {
+                } else if (AreaObject.getStart((Player) user) == false) {
                     if (wool.getColor() == DyeColor.RED) {
                         user.getPlayer().getServer().getScheduler().cancelAllTasks();
                         player.sendMessage("end!");

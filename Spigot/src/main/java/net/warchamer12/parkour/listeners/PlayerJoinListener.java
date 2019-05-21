@@ -2,8 +2,10 @@ package net.warchamer12.parkour.listeners;
 
 import net.warchamer12.parkour.configs.PlayerConfig;
 
+import net.warchamer12.parkour.objects.AreaObject;
 import net.warchamer12.parkour.utils.ItemBuilder;
 import net.warchamer12.parkour.utils.Util;
+import net.warchamer12.parkour.utils.players.uUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -31,6 +33,7 @@ public class PlayerJoinListener implements Listener {
         ItemStack c = new ItemBuilder(Material.BED).setName(Util.fixColor("&4CheckPoint")).toItemStack();
 
         if (player.hasPlayedBefore()) {
+            AreaObject user = uUtil.getUserByNick(player.getName());
             PlayerConfig.load(player);
             player.sendMessage(Util.fixColor("&cWitamy ponownie na serwerze " + player.getName() + "!"));
 
